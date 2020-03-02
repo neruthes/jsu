@@ -13,3 +13,7 @@ javascript:(function(u){var xhr=new XMLHttpRequest();xhr.open('GET','//neruthes.
 ```
 
 ## Copyright
+
+© 2014-2020 Neruthes ([neruthes.xyz](https://neruthes.xyz/))
+
+Each component has its own licensing notice.
