@@ -191,10 +191,10 @@
 		if (inputText.length > 100) {
 			return '请输入更少文字';
 		};
-		var cols = 7;
+		var cols = 10;
 		var rows = Math.ceil(inputText.length / cols);
 		cols = Math.ceil(inputText.length / rows)
-		if (cols > rows) {
+		if (rows < 10 && cols > rows) {
 			var colrowswap = cols;
 			cols = rows;
 			rows = colrowswap;
