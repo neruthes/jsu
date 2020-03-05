@@ -5,6 +5,10 @@
 */
 
 (function(styleTag){
+	if (window.uuid_c9eeedc587bd48b0a07875edc4f8ae9a) {
+		return 1;
+	};
+	window.uuid_c9eeedc587bd48b0a07875edc4f8ae9a = true;
 	var styleDict = {
 		fontSize: {
 			h1: 40,

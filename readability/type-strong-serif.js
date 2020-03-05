@@ -24,5 +24,5 @@
 		st.innerHTML = styleText;
 		document.head.appendChild(st);
 	};
-	(function(u){var xhr=new XMLHttpRequest();xhr.open('GET','//neruthes.xyz/jsu/'+u);xhr.onload=function(){eval(xhr.responseText);console.log('Loaded '+u);};xhr.send();})('readability/reset-styles.js')
+	(function(u){var xhr=new XMLHttpRequest();xhr.open('GET','//neruthes.xyz/jsu/'+u);xhr.onload=function(){eval(xhr.responseText);console.log('Loaded '+u);};xhr.send();})('readability/reset-styles.js');
 })(document.getElementById('neruthes-typeface-replacement-text'));
