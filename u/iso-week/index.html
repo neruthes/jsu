@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ISO 8601 Week</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="pridejs-config-duration" content="regular">
+	<style type="text/css">
+	html[data-app-lang="en"] .lang-zh-only {
+		display: none;
+	}
+	html[data-app-lang="zh"] .lang-en-only {
+		display: none;
+	}
+	body[data-string-empty="true"] .fade-when-input-box-empty {
+		opacity: 0;
+	}
+	</style>
+	<style type="text/css">
+	._desktop-linecompact {
+		display: inline-block;
+	}
+	._desktop-linebreak {
+		display: block;
+	}
+	@media screen and (max-width: 767px) {
+		.desktop-only {
+			display: none;
+		}
+		._desktop-linecompact {
+			display: block;
+		}
+		._desktop-linebreak {
+			display: inline-block;
+		}
+	}
+	</style>
+	<style type="text/css">
+	* {
+		text-rendering: optimizeLegibility;
+		box-sizing: border-box;
+		transition: all 200ms ease;
+	}
+	body {
+		font-family: 'Source Code Pro', Seravek, 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', Arial, 'Arial-Black', 'Arial Black', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', sans-serif;
+		font-size: 18px;
+		font-weight: 300;
+		color: #FFF;
+		color: #666;
+		background: #2089DA;
+		background: #F2F2F2;
+		padding: 0;
+		margin: 0;
+	}
+	.cont {
+		width: auto;
+		max-width: 660px;
+		padding: 1px 24px 0;
+		margin: 0 auto;
+	}
+	.content {
+		margin: 1.6rem 0 0;
+	}
+	h1 {
+		font-size: 26px;
+		/* height: 0px; */
+		margin: 1.6rem 0 0;
+		/* overflow: hidden; */
+	}
+	h2 {
+		font-size: 16px;
+		font-weight: 500;
+		letter-spacing: 0.12rem;
+		text-transform: uppercase;
+		opacity: 1;
+		margin: 0 0 0.8rem;
+	}
+	textarea {
+		font-family: 'Source Code Pro', 'Menlo', 'Consolas', 'Monaco', Seravek, 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', Arial, 'Arial-Black', 'Arial Black', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', sans-serif;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 26px;
+		word-wrap: break-word;
+		word-break: break-all;
+		box-shadow: rgba(0, 0, 0, 0.044) 0 1px 2px;
+		border: none;
+		border-radius: 3px;
+		outline: none;
+
+		display: block;
+		width: 100%;
+		height: 20vh;
+		padding: 6px;
+		margin: 0;
+
+		resize: none;
+	}
+	@media screen and (max-height: 500px) {
+		textarea {
+			height: 6rem;
+		}
+	}
+	#ta-encoded {
+		visibility: hidden;
+	}
+	footer {
+		font-size: 13px;
+		font-weight: 400;
+		color: #666;
+
+		padding: 2rem 0 2rem;
+	}
+	footer a {
+		opacity: 0.5;
+		transition: none;
+	}
+	footer a:hover {
+		opacity: 1;
+	}
+	/* ---------------------------------------- */
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+	</style>
+</head>
+<body data-string-empty="true">
+	<div class="cont">
+		<h1><a href="./">ISO Week</a></h1>
+		<div class="content" id="textarea-01-container">
+			<h2><label for="textarea-01">Today Is</label></h2>
+			<textarea id="textarea-01" readonly></textarea>
+		</div>
+		<footer class="desktop-only fade-when-input-box-empty">
+			<div class="_desktop-linecompact">
+				<a href="//neruthes.xyz/">Created by <strong>Neruthes</strong>.</a>
+				<span><a href="//github.com/neruthes/jsu/">Source code</a> available.</span>
+				<span>Licensed under <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU AGPL v3</a>.</span>
+			</div>
+		</footer>
+	</div>
+	<script type="text/javascript">
+	var leftpad = function (str) {
+		var len = 2;
+		var pad = '0';
+		return (new Array(len-str.length)).fill(pad) + str;
+	};
+	var getWeek = function (dateObj) {
+	    var newDate = new Date(dateObj.getTime());
+	    var dayN = (dateObj.getDay() + 6) % 7;
+	    newDate.setDate(newDate.getDate() - dayN + 3);
+	    var firstThursday = newDate.valueOf();
+	    newDate.setMonth(0, 1);
+	    if (newDate.getDay() !== 4) {
+	        newDate.setMonth(0, 1 + ((4 - newDate.getDay()) + 7) % 7);
+	    };
+	    return (new Date()).getUTCFullYear() + '-W' + leftpad(
+			( 1 + Math.ceil((firstThursday-newDate)/604800000) ).toString()
+		) + '-' + dateObj.getDay();
+	};
+	document.querySelector('#textarea-01').value = getWeek(new Date());
+	</script>
+	<script src="https://neopcdn.github.io/pride.js/pride.js"></script>
+</body>
+</html>

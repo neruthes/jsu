@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Utilities</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="https://neruthes.xyz/">
+        <style media="screen">
+        @import url(https://neruthes.xyz/fonts/realtimerounded.css);
+        html, body {
+            font-family: -apple-system, 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        .cont {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .grand-header {
+            text-align: center;
+            padding: 50px 0 20px;
+        }
+        .grand-header h1 {
+            margin: 0;
+        }
+        .section {
+            margin: 0 0 40px;
+        }
+        h2 {
+            font-weight: 600;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .content .list ul, .content .list ul li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .content .list ul li {
+            text-align: center;
+            background: #F5F5F5;
+            border-radius: 5px;
+            margin: 0 0 15px;
+        }
+        .content .list ul li:hover {
+            background: #E5E5E5;
+        }
+        .content .list ul li a {
+            color: #06E;
+            color: #000;
+            text-decoration: none;
+            display: block;
+            padding: 15px 0;
+        }
+        .content .list ul li:hover a {
+            color: #06E;
+        }
+        .content .list ul li a h3 {
+            font-weight: 600;
+            padding: 0;
+            margin: 0;
+        }
+        .content .list ul li a p {
+            padding: 0 0;
+            margin: 0;
+        }
+        footer {
+            text-align: center;
+        }
+        </style>
+        <style media="screen">
+        .ff-monospace {
+            font-family: 'RealtimeRounded', 'JetBrains Sans', 'Source Code Pro', 'Inconsolata', 'Menlo', monospace;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="cont">
+            <header class="grand-header">
+                <div class="header-content">
+                    <div class="ff-monospace">
+                        <h1>JavaScript Utilities</h1>
+                    </div>
+                </div>
+            </header>
+            <div class="content">
+                <div class="list">
+                    <div id="js-List">
+                    </div>
+                    <div class="" id="js-ListContentPre" style="display:none;visibility:hidden;">
+
+                    </div>
+                    <script type="text/javascript">
+                    var sections = [
+                        {
+                            title: 'Webpages',
+                            data: [
+                                ['crypto-utils/','Crypto-Utils'],
+                                ['jsu/u/iso-week/','ISO Week'],
+                                ['jsu/u/zh-vertical/','中文竖排'],
+                                ['get-cookie/','Get Cookie']
+                            ]
+                        },
+                        {
+                            title: 'Scripts',
+                            data: [
+                                ['jsu/readability/type-strong-sansserif.js','type-strong-sansserif.js'],
+                                ['jsu/readability/type-strong-serif.js','type-strong-serif.js']
+                            ]
+                        }
+                    ];
+                    var tmplSection = `<div class="section">
+                        <h2 class="ff-monospace">_SEC_</h2>
+                        <div>
+                            <ul>
+                                _LIST_
+                            </ul>
+                        </div>
+                    </div>`;
+                    var tmplEntry = `<li>
+                        <a href="/_PATH_">
+                            <h3>_NAME_</h3>
+                        </a>\
+                    </li>`;
+                    document.getElementById('js-List').innerHTML = sections.map(function (section) {
+                        var list = section.data.map(entry => tmplEntry.replace(/_NAME_/, entry[1]).replace(/_PATH_/, entry[0])).join('');
+                        var sectionHtml = tmplSection.replace(/_SEC_/, section.title).replace(/_LIST_/, list);
+                        return sectionHtml;
+                    }).join('');
+                    </script>
+                </div>
+            </div>
+            <footer class="ff-monospace">
+                <p>Copyright (c) 2014-<script>document.write((new Date()).getUTCFullYear())</script> Neruthes</p>
+            </footer>
+        </div>
+    </body>
+</html>
