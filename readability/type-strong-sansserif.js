@@ -24,28 +24,5 @@
 		st.innerHTML = styleText;
 		document.head.appendChild(st);
 	};
-	var styleDict = {
-		fontSize: {
-			h1: 40,
-			h2: 36,
-			h3: 30,
-			h4: 28,
-			h5: 26,
-			h6: 22,
-			p: 20,
-		},
-		fontWeight: {
-			h1: 600,
-			h2: 600,
-			h3: 600,
-			h4: 600,
-			h5: 600,
-			h6: 600,
-			p: 400,
-		}
-	};
-	document.querySelectorAll('h1, h2, h3, h4, h5, h6, p').forEach(node => {
-		node.style.fontSize = (styleDict.fontSize)[node.tagName.toLowerCase()] + 'px';
-		node.style.fontSize = (styleDict.fontWeight)[node.tagName.toLowerCase()] + '';
-	});
+	(function(u){var xhr=new XMLHttpRequest();xhr.open('GET','//neruthes.xyz/jsu/'+u);xhr.onload=function(){eval(xhr.responseText);console.log('Loaded '+u);};xhr.send();})('readability/reset-styles.js')
 })(document.getElementById('neruthes-typeface-replacement-text'));

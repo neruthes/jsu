@@ -5,10 +5,10 @@
 */
 
 (function(){
-	if (window.f00d460970e44ab5a4ff01e640e063f8 == '1.0.0') {
+	if (window.uuid_f00d460970e44ab5a4ff01e640e063f8 == '1.0.0') {
 		return 1;
 	};
-	window.f00d460970e44ab5a4ff01e640e063f8 = '1.0.0';
+	window.uuid_f00d460970e44ab5a4ff01e640e063f8 = '1.0.0';
 	var doms = document.body.querySelectorAll('*');
 	var applyStyles = function (dom) {
 		dom.style.fontSize = '20px';
