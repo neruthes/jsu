@@ -29,10 +29,12 @@
 			p: 400,
 		}
 	};
-	document.querySelectorAll('h1, h2, h3, h4, h5, h6, p').forEach(node => {
-		node.style.fontSize = (styleDict.fontSize)[node.tagName.toLowerCase()] + 'px';
+	document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, ul, ol').forEach(node => {
+		if ('h1, h2, h3, h4, h5, h6, p'.split(', ').indexOf(node.tagName.toLowerCase()) > -1) {
+			node.style.fontSize = (styleDict.fontSize)[node.tagName.toLowerCase()] + 'px';
+			node.style.fontWeight = (styleDict.fontWeight)[node.tagName.toLowerCase()] + '';
+		};
 		node.style.lineHeight = '1.6em';
-		node.style.fontWeight = (styleDict.fontWeight)[node.tagName.toLowerCase()] + '';
 		node.style.marginLeft = 'auto';
 	    node.style.marginRight = 'auto';
 	    node.style.maxWidth = '660px';
