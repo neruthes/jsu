@@ -13,7 +13,7 @@
 		h5 { font-size: 26px; font-weight: 600; }
 		h6 { font-size: 22px; font-weight: 600; }
 		p { font-size: 20px; font-weight: 400; }
-		h1, h2, h3, h4, h5, h6, p, ul, ol {
+		h1, h2, h3, h4, h5, h6, p {
 			line-height: 1.6em;
 			max-width: 692px;
 			margin-left: auto;
