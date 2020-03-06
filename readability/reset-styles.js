@@ -15,7 +15,8 @@
 		p { font-size: 20px; font-weight: 400; }
 		h1, h2, h3, h4, h5, h6,
 		h1 ~ ul, h2 ~ ul, h3 ~ ul, h4 ~ ul, h5 ~ ul, h6 ~ ul,
-		h1 ~ table, h2 ~ table, h3 ~ table, h4 ~ table, h5 ~ table, h6 ~ table, 
+		h1 ~ ol, h2 ~ ol, h3 ~ ol, h4 ~ ol, h5 ~ ol, h6 ~ ol,
+		h1 ~ table, h2 ~ table, h3 ~ table, h4 ~ table, h5 ~ table, h6 ~ table,
 		p {
 			line-height: 1.6em;
 			max-width: 692px;
