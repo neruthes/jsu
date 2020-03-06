@@ -37,6 +37,6 @@
 		node.style.lineHeight = '1.6em';
 		node.style.marginLeft = 'auto';
 	    node.style.marginRight = 'auto';
-	    node.style.maxWidth = '660px';
+	    node.style.maxWidth = '692px';
 	});
 })();
