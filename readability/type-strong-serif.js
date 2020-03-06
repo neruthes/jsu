@@ -17,7 +17,7 @@
 		font-family: "JetBrains Mono", "Source Code Pro", "Inconsolata", "Menlo", Consolas, monospace !important;
 	}`;
 	if (styleTag) {
-		styleTag.innerHTML = styleText;
+		styleTag.remove();
 	} else {
 		var st = document.createElement('style');
 		st.setAttribute('id', 'neruthes-typeface-replacement-text');
