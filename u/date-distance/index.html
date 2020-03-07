@@ -160,9 +160,14 @@
                     </svg>
                 </div>
 
-                <div class="h1" style="font-size: 80px; text-align: center; padding: 0 0 30px;">
+                <div class="h1" style="font-size: 80px; text-align: center; padding: 0 0 30px;" id="js-DaysCountContainer">
                     <span id="js-DaysCount">*</span>
                 </div>
+                <script type="text/javascript">
+                document.querySelector('#js-DaysCountContainer').addEventListener('click', function () {
+                    window.scrollTo(0, document.querySelector('#main').offsetTop+15);
+                });
+                </script>
 
                 <div class="" style="font-size: 24px; padding: 0;">
                     <div class="" style="font-size: 20px; font-weight: 600; padding: 0 0 20px; letter-spacing: 3px; text-transform: uppercase;">
