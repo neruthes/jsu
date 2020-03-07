@@ -2,6 +2,8 @@
 
 ## Online Utilities
 
+- [Date-Distance](https://neruthes.xyz/jsu/u/date-distance/)
+- [ISO-Week](https://neruthes.xyz/jsu/u/iso-week/)
 - [中文竖排](https://neruthes.xyz/jsu/u/zh-vertical/)
 
 ## Bookmarklets
