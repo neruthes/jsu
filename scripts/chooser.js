@@ -64,7 +64,7 @@
 		border-radius: 8px;
 		box-shadow: rgba(0, 0, 0, 0.08) 0 5px 20px 2px;
 		max-width: 600px;
-		height: 100%;
+		height: calc(100vh - 40px);
 		padding: 20px;
 		margin: 0 auto;
 		overflow: scroll;
