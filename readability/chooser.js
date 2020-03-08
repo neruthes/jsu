@@ -30,7 +30,8 @@
 	var listOfScripts = [
 		'type-strong-sansserif.js',
 		'type-strong-serif.js',
-		'night.js'
+		'night.js',
+		'day.js'
 	];
 	var listHtml = listOfScripts.map(function (str) {
 		return `<div class="uuid_cd101a8082fe4bb1b94efb131c7724dd-option">
