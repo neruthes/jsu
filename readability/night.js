@@ -10,6 +10,9 @@
 		color: #AAA !important;
 		background: #000 !important;
 		box-shadow: none !important;
+	}
+	a {
+		color: #C80 !important;
 	}`;
 	if (styleTag) {
 		styleTag.remove();
