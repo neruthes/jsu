@@ -53,10 +53,12 @@
 	`);
 	modalTag.innerHTML = `
 	<style>
+	uuid_cd101a8082fe4bb1b94efb131c7724dd,
 	#uuid_cd101a8082fe4bb1b94efb131c7724dd * {
 		font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
 		color: #000;
 		line-height: 1.5;
+		box-sizing: border-box;
 	}
 	#uuid_cd101a8082fe4bb1b94efb131c7724dd-inner {
 		font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
