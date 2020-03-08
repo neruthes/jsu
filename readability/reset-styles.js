@@ -18,6 +18,8 @@
 		h1 ~ ol, h2 ~ ol, h3 ~ ol, h4 ~ ol, h5 ~ ol, h6 ~ ol,
 		h1 ~ table, h2 ~ table, h3 ~ table, h4 ~ table, h5 ~ table, h6 ~ table,
 		p {
+			color: #000;
+			background: #FFF;
 			line-height: 1.6em;
 			max-width: 692px;
 			margin-left: auto;
