@@ -53,7 +53,13 @@
 	`);
 	modalTag.innerHTML = `
 	<style>
+	#uuid_cd101a8082fe4bb1b94efb131c7724dd * {
+		font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+		color: #000;
+		line-height: 1.5;
+	}
 	#uuid_cd101a8082fe4bb1b94efb131c7724dd-inner {
+		font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
 		background: #FFF;
 		border-radius: 8px;
 		box-shadow: rgba(0, 0, 0, 0.08) 0 5px 20px 2px;
@@ -64,7 +70,6 @@
 		overflow: scroll;
 	}
 	#uuid_cd101a8082fe4bb1b94efb131c7724dd-header {
-		font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
 		padding: 10px 0 25px;
 	}
 	#uuid_cd101a8082fe4bb1b94efb131c7724dd-h1 {
