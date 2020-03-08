@@ -17,7 +17,7 @@
 		var src = e.target.getAttribute('data-src');
 		(function (u) {
 			var xhr = new XMLHttpRequest();
-			xhr.open('GET', 'https://' + u);
+			xhr.open('GET', 'https://neruthes.xyz/jsu/readability/' + u);
 			xhr.onload = function(){
 				eval(xhr.responseText);
 				console.log('Loaded ' + u);
@@ -28,8 +28,9 @@
 	};
 
 	var listOfScripts = [
-		'neruthes.xyz/jsu/readability/type-strong-sansserif.js',
-		'neruthes.xyz/jsu/readability/type-strong-serif.js'
+		'type-strong-sansserif.js',
+		'type-strong-serif.js',
+		'night.js'
 	];
 	var listHtml = listOfScripts.map(function (str) {
 		return `<div class="uuid_cd101a8082fe4bb1b94efb131c7724dd-option">

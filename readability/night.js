@@ -9,41 +9,14 @@
 	{
 		color: #AAA !important;
 		background: #000 !important;
+		box-shadow: none !important;
 	}`;
 	if (styleTag) {
-		styleTag.innerHTML = styleText;
+		styleTag.remove();
 	} else {
 		var st = document.createElement('style');
-		st.setAttribute('id', 'neruthes-c7b490da96e443a99cde54b4e68e34d9');
+		st.setAttribute('id', 'uuid_10a70394667c4d3a947f7c3954e83951');
 		st.innerHTML = styleText;
 		document.head.appendChild(st);
 	};
-	var styleDict = {
-		fontSize: {
-			h1: 40,
-			h2: 36,
-			h3: 30,
-			h4: 28,
-			h5: 26,
-			h6: 22,
-			p: 20,
-		},
-		fontWeight: {
-			h1: 600,
-			h2: 600,
-			h3: 600,
-			h4: 600,
-			h5: 600,
-			h6: 600,
-			p: 400,
-		}
-	};
-	document.querySelectorAll('*').forEach(node => {
-		if ('h1 h2 h3 h4 h5 h6 p'.split(' ').indexOf(node.tagName) > -1) {
-			node.style.fontSize = (styleDict.fontSize)[node.tagName.toLowerCase()] + 'px';
-			node.style.fontSize = (styleDict.fontWeight)[node.tagName.toLowerCase()] + '';
-		};
-		node.style.color = '#AAA';
-		node.style.background = '#000';
-	});
-})(document.getElementById('neruthes-c7b490da96e443a99cde54b4e68e34d9'));
+})(document.getElementById('uuid_10a70394667c4d3a947f7c3954e83951'));
