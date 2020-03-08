@@ -1,7 +1,7 @@
 /*
 	@author Neruthes
 	@year 2020
-	@license AGPL-3.0
+	@license AGPL-3.0 https://www.gnu.org/licenses/agpl-3.0.html
 */
 
 (function(styleTag){

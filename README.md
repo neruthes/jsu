@@ -20,4 +20,4 @@ javascript:(function(u){var xhr=new XMLHttpRequest();xhr.open('GET','//neruthes.
 
 Each component has its own licensing notice.
 
-The author strongly advises NOT to use any of the softwares provided herein. If you insist to use any, you do it AT YOUR OWN RISK.
+The author strongly advises NOT to use any of the softwares provided herein. If you insist to use any, you do it AT YOUR OWN RISK. No warranty is provided, neither expressed nor implied.
