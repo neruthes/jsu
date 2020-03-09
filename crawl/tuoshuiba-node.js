@@ -11,9 +11,10 @@ const homedir = require('os').homedir();
 const newLineMark = `__d0cea1092d8344a3913ca8f48fb583f5__`;
 // ----------------------------------
 
-let threadId = process.argv[2];
-let beginPage = parseInt(process.argv[3]) || 1;
-let endPage = parseInt(process.argv[4]) || 2;
+let verb = child_process.argv[2];
+let threadId = process.argv[3];
+let beginPage = parseInt(process.argv[4]) || 1;
+let endPage = parseInt(process.argv[5]) || 2;
 
 if (process.argv.length < 6) {
 	console.log('Insufficient arguments. Exit 1.');
@@ -50,7 +51,7 @@ let urls = (new Array(endPage-beginPage+1)).fill(1).map((x, i) => beginPage+i).m
 	page: page
 }));
 
-if (process.argv[5] === 'fetch') {
+if (verb === 'fetch') {
 	urls.map(function (url, i) {
 		setTimeout(function () {
 			request(url.url, function (err, msg, html) {
@@ -65,7 +66,7 @@ if (process.argv[5] === 'fetch') {
 	});
 };
 
-if (process.argv[5] === 'parse') {
+if (verb === 'parse') {
 	urls.map(function (url, i) {
 		setTimeout(function () {
 			var html = Data_Html.get(url.threadId, url.page).replace(/\n+?/g, newLineMark);
@@ -90,7 +91,7 @@ if (process.argv[5] === 'parse') {
 	});
 };
 
-if (process.argv[5] === 'export') {
+if (verb === 'export') {
 	var exportHtml = urls.map(function (url, i) {
 		var pageData = Data_Page.get(url.threadId, url.page);
 		var pageHtml = `## Page ${url.page}\n\n` + pageData.posts.map(function (post) {
@@ -101,10 +102,10 @@ if (process.argv[5] === 'export') {
 	console.log(exportHtml);
 };
 
-if (process.argv[5] === 'rm') {
+if (verb === 'rm') {
 	child_process.exec(`rm ${homrdir}/.xyz.neruthes/jsu.tuoshuiba-node.v1/html/${threadId}-*.html; rm ${homrdir}/.xyz.neruthes/jsu.tuoshuiba-node.v1/page/${threadId}-*.json;`);
 };
 
-if (process.argv[5] === 'nuke') {
+if (verb === 'nuke') {
 	child_process.exec(`rm ${homrdir}/.xyz.neruthes/jsu.tuoshuiba-node.v1/html/*.html; rm ${homrdir}/.xyz.neruthes/jsu.tuoshuiba-node.v1/page/*.json;`);
 };
