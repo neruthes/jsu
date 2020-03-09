@@ -89,6 +89,7 @@
 	}
 	.uuid_cd101a8082fe4bb1b94efb131c7724dd-option_inner {
 		font-size: 20px;
+		font-weight: 400;
 		background: #FFF;
 		border: 1px solid #DDD;
 		border-radius: 4px;
