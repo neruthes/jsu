@@ -47,7 +47,7 @@ window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (argv, callback) {
 		});
 	} else { // Swap state
 		if (styleTag) {
-			styleTag.remove()
+			styleTag.remove();
 			styleTag = document.createElement('style');
 			callback && callback({
 				err: 0,
@@ -64,4 +64,4 @@ window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (argv, callback) {
 			});
 		};
 	};
-});
+};
