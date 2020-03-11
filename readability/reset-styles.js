@@ -19,7 +19,7 @@
 		h1 ~ table, h2 ~ table, h3 ~ table, h4 ~ table, h5 ~ table, h6 ~ table,
 		p {
 			line-height: 1.6em;
-			max-width: 692px;
+			max-width: 736px;
 			margin-left: auto;
 			margin-right: auto;
 		}
