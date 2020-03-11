@@ -13,13 +13,9 @@
 	}
 */
 window.uuid_9a5a3ad359c2416ead609c80962d03e6_func = function (argv, callback) {
-	var givenState = argv ? argv.font : undefined;
-	if ([0,1,2,3].indexOf(givenState) === -1) {
-		callback && callback({
-			err: 1,
-			msg: 'Invalid "givenState" argument.'
-		});
-		return 1
+	var givenState = 1;
+	if (argv) {
+		givenState = argv.font || givenState;
 	};
 	var txt = function (st) {
 		if (st === 0) {
