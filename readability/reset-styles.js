@@ -65,7 +65,7 @@ window.uuid_c9eeedc587bd48b0a07875edc4f8ae9a_func = function (argv, callback) {
 			document.head.appendChild(styleTag);
 			callback && callback({
 				err: 0,
-				msg: 'Added reset-styles.js styles as required.',
+				msg: 'Swapped reset-styles.js styles. Added.',
 				enabled: true
 			});
 		};

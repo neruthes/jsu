@@ -55,6 +55,7 @@ window.uuid_9a5a3ad359c2416ead609c80962d03e6_func = function (argv, callback) {
 		}`;
 	};
 	var styleTag = document.getElementById('uuid_9a5a3ad359c2416ead609c80962d03e6');
+
 	if (styleTag) {
 		var newState = givenState || (parseInt(styleTag.getAttribute('data-state')) + 1) % 4;
 		styleTag.innerHTML = txt(newState);

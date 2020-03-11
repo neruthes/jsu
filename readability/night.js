@@ -22,7 +22,7 @@ window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (argv, callback) {
 		color: #C80;
 	}
 	`;
-	document.getElementById('uuid_10a70394667c4d3a947f7c3954e83951');
+	var styleTag = document.getElementById('uuid_10a70394667c4d3a947f7c3954e83951');
 
 	if (verb === 'revert') {
 		styleTag.remove();
@@ -59,7 +59,7 @@ window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (argv, callback) {
 			document.head.appendChild(styleTag);
 			callback && callback({
 				err: 0,
-				msg: 'Added night.js styles as required.',
+				msg: 'Swapped night.js styles. Added.',
 				enabled: true
 			});
 		};

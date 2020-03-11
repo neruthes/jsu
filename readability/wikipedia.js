@@ -70,7 +70,7 @@ window.uuid_6b747739dc4e4d5ab18bfe7906fafb45_func = function (argv, callback) {
 			document.head.appendChild(styleTag);
 			callback && callback({
 				err: 0,
-				msg: 'Added wikipedia.js styles as required.',
+				msg: 'Swapped wikipedia.js styles. Added.',
 				enabled: true
 			});
 		};

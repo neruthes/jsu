@@ -55,7 +55,7 @@ window.uuid_ba211bc1c0714e8c856a8aab16b36c17_func = function (argv, callback) {
 			document.head.appendChild(styleTag);
 			callback && callback({
 				err: 0,
-				msg: 'Added infinity-family.js styles as required.',
+				msg: 'Swapped infinity-family.js styles. Added.',
 				enabled: true
 			});
 		};

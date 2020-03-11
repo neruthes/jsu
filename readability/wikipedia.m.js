@@ -65,7 +65,7 @@ window.uuid_83e4165b9d4f4d4eb558439cd421451d_func = function (argv, callback) {
 			document.head.appendChild(styleTag);
 			callback && callback({
 				err: 0,
-				msg: 'Added wikipedia.m.js styles as required.',
+				msg: 'Swapped wikipedia.m.js styles. Added.',
 				enabled: true
 			});
 		};
