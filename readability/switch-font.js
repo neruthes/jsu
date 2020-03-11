@@ -19,6 +19,11 @@
 		html, body {
 			font-size: 10px !important;
 		}
+		body > *,
+		body > * > *,
+		body > * > * > * {
+			font-size: 20px;
+		}
 		p, ul, ol, li, aside, textarea, input, button, blockquote, form, table, tbody, tl, td, tr, article, section {
 			font-size: 20px !important;
 			font-weight: 400 !important;
