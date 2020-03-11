@@ -6,9 +6,9 @@
 
 window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (argv, callback) {
 	var verb = 'initial';
-    if (argv) {
-        verb = argv.verb || verb;
-    };
+	if (argv) {
+		verb = argv.verb || verb;
+	};
 	var styleText = `html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, aside, textarea, input, button, blockquote, form, table, tbody, tl, td, tr, article, section, div, figure, header, footer, q, cite, em, strong, span, address, time, dfn, caption
 	{
 		color: #AAA !important;
@@ -35,11 +35,11 @@ window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (argv, callback) {
 		if (!styleTag) {
 			styleTag = document.createElement('style');
 			styleTag.setAttribute('id', 'uuid_10a70394667c4d3a947f7c3954e83951');
-            styleTag.innerHTML = styleText;
+			styleTag.innerHTML = styleText;
 		} else {
-            styleTag.innerHTML = styleText;
-            document.head.appendChild(styleTag);
-        };
+			styleTag.innerHTML = styleText;
+			document.head.appendChild(styleTag);
+		};
 		callback && callback({
 			err: 0,
 			msg: 'Added night.js styles as required.',

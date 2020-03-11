@@ -6,9 +6,9 @@
 
 window.uuid_83e4165b9d4f4d4eb558439cd421451d_func = function (argv, callback) {
 	var verb = 'initial';
-    if (argv) {
-        verb = argv.verb || verb;
-    };
+	if (argv) {
+		verb = argv.verb || verb;
+	};
 	var styleText = `
 	@import url(https://neruthes.xyz/fonts/jetbrains-mono.css);
 	html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, aside, textarea, input, button, blockquote, form, table, tbody, tl, td, tr, article, section, div, a, figure, header, footer, q, cite, em, strong, address, time, dfn, caption
@@ -41,11 +41,11 @@ window.uuid_83e4165b9d4f4d4eb558439cd421451d_func = function (argv, callback) {
 		if (!styleTag) {
 			styleTag = document.createElement('style');
 			styleTag.setAttribute('id', 'uuid_83e4165b9d4f4d4eb558439cd421451d');
-            styleTag.innerHTML = styleText;
+			styleTag.innerHTML = styleText;
 		} else {
-            styleTag.innerHTML = styleText;
-            document.head.appendChild(styleTag);
-        };
+			styleTag.innerHTML = styleText;
+			document.head.appendChild(styleTag);
+		};
 		callback && callback({
 			err: 0,
 			msg: 'Added wikipedia.m.js styles as required.',

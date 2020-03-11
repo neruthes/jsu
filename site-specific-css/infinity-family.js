@@ -5,22 +5,22 @@
 */
 
 window.uuid_ba211bc1c0714e8c856a8aab16b36c17_func = function (argv, callback) {
-    var verb = 'initial';
-    if (argv) {
-        verb = argv.verb || verb;
-    };;
+	var verb = 'initial';
+	if (argv) {
+		verb = argv.verb || verb;
+	};;
 	var styleText = '';
-    if (location.pathname.indexOf('/project/') === 0) {
-        styleText = `
-        .comments {
-            float: left;
-            width: 45vw;
-        }
-    	`;
-    };
-    var styleTag = document.getElementById('uuid_ba211bc1c0714e8c856a8aab16b36c17');
+	if (location.pathname.indexOf('/project/') === 0) {
+		styleText = `
+		.comments {
+			float: left;
+			width: 45vw;
+		}
+		`;
+	};
+	var styleTag = document.getElementById('uuid_ba211bc1c0714e8c856a8aab16b36c17');
 
-    if (verb === 'revert') {
+	if (verb === 'revert') {
 		styleTag.remove();
 		callback && callback({
 			err: 0,
@@ -31,11 +31,11 @@ window.uuid_ba211bc1c0714e8c856a8aab16b36c17_func = function (argv, callback) {
 		if (!styleTag) {
 			styleTag = document.createElement('style');
 			styleTag.setAttribute('id', 'uuid_ba211bc1c0714e8c856a8aab16b36c17');
-            styleTag.innerHTML = styleText;
+			styleTag.innerHTML = styleText;
 		} else {
-            styleTag.innerHTML = styleText;
-            document.head.appendChild(styleTag);
-        };
+			styleTag.innerHTML = styleText;
+			document.head.appendChild(styleTag);
+		};
 		callback && callback({
 			err: 0,
 			msg: 'Added infinity-family.js styles as required.',

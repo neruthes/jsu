@@ -6,9 +6,9 @@
 
 window.uuid_c9eeedc587bd48b0a07875edc4f8ae9a_func = function (argv, callback) {
 	var verb = 'initial';
-    if (argv) {
-        verb = argv.verb || verb;
-    };
+	if (argv) {
+		verb = argv.verb || verb;
+	};
 	var styleText = `
 		h1 { font-size: 40px; font-weight: 600; }
 		h2 { font-size: 36px; font-weight: 600; }
@@ -41,11 +41,11 @@ window.uuid_c9eeedc587bd48b0a07875edc4f8ae9a_func = function (argv, callback) {
 		if (!styleTag) {
 			styleTag = document.createElement('style');
 			styleTag.setAttribute('id', 'uuid_c9eeedc587bd48b0a07875edc4f8ae9a');
-            styleTag.innerHTML = styleText;
+			styleTag.innerHTML = styleText;
 		} else {
-            styleTag.innerHTML = styleText;
-            document.head.appendChild(styleTag);
-        };
+			styleTag.innerHTML = styleText;
+			document.head.appendChild(styleTag);
+		};
 		callback && callback({
 			err: 0,
 			msg: 'Added reset-styles.js styles as required.',
