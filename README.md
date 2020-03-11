@@ -6,13 +6,9 @@
 - [ISO-Week](https://neruthes.xyz/jsu/u/iso-week/)
 - [中文竖排](https://neruthes.xyz/jsu/u/zh-vertical/)
 
-## Bookmarklets
+## Scripts for Scrlo
 
-### Readability
-
-```javascript
-javascript:(function(u){var xhr=new XMLHttpRequest();xhr.open('GET','//neruthes.xyz/jsu/'+u);xhr.onload=function(){eval(xhr.responseText);console.log('Loaded '+u);};xhr.send();})('readability/chooser.js')
-```
+See [neruthes/Scrlo](https://github.com/neruthes/Scrlo) to learn more about how to use these scripts with Scrlo.
 
 ## Copyright
 
@@ -20,4 +16,4 @@ javascript:(function(u){var xhr=new XMLHttpRequest();xhr.open('GET','//neruthes.
 
 Each component has its own licensing notice.
 
-The author strongly advises NOT to use any of the softwares provided herein. If you insist to use any, you do it AT YOUR OWN RISK. No warranty is provided, neither expressed nor implied.
+The author DOES NOT advise you to use any of the softwares provided herein. If you insist to use any, you do it AT YOUR OWN RISK. No warranty is provided, neither expressed nor implied.
