@@ -66,6 +66,7 @@ window.uuid_6b747739dc4e4d5ab18bfe7906fafb45_func = function (argv, callback) {
 				enabled: false
 			});
 		} else {
+			styleTag = document.createElement('style');
 			styleTag.innerHTML = styleText;
 			document.head.appendChild(styleTag);
 			callback && callback({
