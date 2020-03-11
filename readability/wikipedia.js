@@ -36,7 +36,7 @@ window.uuid_6b747739dc4e4d5ab18bfe7906fafb45_func = function (argv, callback) {
 	var styleTag = document.getElementById('uuid_6b747739dc4e4d5ab18bfe7906fafb45');
 	if (verb === 'unset') {
 		styleTag.remove();
-		callback({
+		callback && callback({
 			err: 0,
 			msg: 'Removed wikipedia.js styles.',
 			enabled: false
@@ -46,7 +46,7 @@ window.uuid_6b747739dc4e4d5ab18bfe7906fafb45_func = function (argv, callback) {
 		st.setAttribute('id', 'uuid_6b747739dc4e4d5ab18bfe7906fafb45');
 		st.innerHTML = styleText;
 		document.head.appendChild(st);
-		callback({
+		callback && callback({
 			err: 0,
 			msg: 'Added wikipedia.js styles.',
 			enabled: true

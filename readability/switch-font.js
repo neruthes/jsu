@@ -15,7 +15,7 @@
 window.uuid_9a5a3ad359c2416ead609c80962d03e6_func = function (argv, callback) {
 	var givenState = argv ? argv.font : undefined;
 	if ([0,1,2,3].indexOf(givenState) === -1) {
-		callback({
+		callback && callback({
 			err: 1,
 			msg: 'Invalid "givenState" argument.'
 		});
@@ -67,7 +67,7 @@ window.uuid_9a5a3ad359c2416ead609c80962d03e6_func = function (argv, callback) {
 		newTag.setAttribute('data-state', 1);
 		document.head.appendChild(newTag);
 	};
-	callback({
+	callback && callback({
 		err: 0,
 		msg: `Successfully set to state ${newState}.`,
 		newState: newState

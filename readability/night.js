@@ -25,7 +25,7 @@ window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (argv, callback) {
 	document.getElementById('uuid_10a70394667c4d3a947f7c3954e83951');
 	if (verb === 'unset') {
 		styleTag.remove();
-		callback({
+		callback && callback({
 			err: 0,
 			msg: 'Removed night.js styles.',
 			enabled: false
@@ -35,7 +35,7 @@ window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (argv, callback) {
 		st.setAttribute('id', 'uuid_10a70394667c4d3a947f7c3954e83951');
 		st.innerHTML = styleText;
 		document.head.appendChild(st);
-		callback({
+		callback && callback({
 			err: 0,
 			msg: 'Added night.js styles.',
 			enabled: true

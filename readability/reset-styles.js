@@ -31,7 +31,7 @@ window.uuid_c9eeedc587bd48b0a07875edc4f8ae9a_func = function (argv, callback) {
 	var styleTag = document.getElementById('uuid_c9eeedc587bd48b0a07875edc4f8ae9a');
 	if (verb === 'unset') {
 		styleTag.remove();
-		callback({
+		callback && callback({
 			err: 0,
 			msg: 'Removed reset-styles.js styles.',
 			enabled: false
@@ -41,7 +41,7 @@ window.uuid_c9eeedc587bd48b0a07875edc4f8ae9a_func = function (argv, callback) {
 		st.setAttribute('id', 'uuid_c9eeedc587bd48b0a07875edc4f8ae9a');
 		st.innerHTML = styleText;
 		document.head.appendChild(st);
-		callback({
+		callback && callback({
 			err: 0,
 			msg: 'Added reset-styles.js styles.',
 			enabled: true
