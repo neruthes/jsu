@@ -16,18 +16,26 @@
 				'font-family: "Source Serif Pro", "Charter", "Iowan Old Style", "Georgia", "Merriweather", "Times New Roman", "Times", serif, "Noto Serif SC", "Source Han Serif CN", "Stongti SC" !important;'
 			][st]}
 		}
-		html, body, p, ul, ol, li, aside, textarea, input, button, blockquote, form, table, tbody, tl, td, tr, article, section {
+		html, body {
+			font-size: 10px !important;
+		}
+		p, ul, ol, li, aside, textarea, input, button, blockquote, form, table, tbody, tl, td, tr, article, section {
 			font-size: 20px !important;
 			font-weight: 400 !important;
 		}
+		h1 { font-size: 36px !important; font-weight: 600 !important; }
+		h2 { font-size: 26px !important; font-weight: 700 !important; }
+		h3 { font-size: 24px !important; font-weight: 600 !important; }
+		h4 { font-size: 22px !important; font-weight: 400 !important; }
+		h5 { font-size: 20px !important; font-weight: 600 !important; }
 		pre, pre *, code, code * {
 			font-family: "JetBrains Mono", "Source Code Pro", "Inconsolata", "Menlo", Consolas, monospace !important;
 		}`;
 	}
 	if (styleTag) {
-		var st = (parseInt(styleTag.getAttribute('data-state')) + 1) % 3;
-		styleTag.innerHTML = txt(st);
-		styleTag.setAttribute('data-state', st);
+		var newState = (parseInt(styleTag.getAttribute('data-state')) + 1) % 3;
+		styleTag.innerHTML = txt(newState);
+		styleTag.setAttribute('data-state', newState);
 	} else {
 		var tag = document.createElement('style');
 		tag.setAttribute('id', 'neruthes-typeface-replacement-text');
