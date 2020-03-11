@@ -5,15 +5,19 @@
 */
 
 (function(styleTag){
-	var styleText = `html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, aside, textarea, input, button, blockquote, form, table, tbody, tl, td, tr, article, section, div, a, figure, header, footer, q, cite, em, strong, span, address, time, dfn, caption
+	var styleText = `html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, aside, textarea, input, button, blockquote, form, table, tbody, tl, td, tr, article, section, div, figure, header, footer, q, cite, em, strong, span, address, time, dfn, caption
 	{
 		color: #AAA !important;
 		background: #000 !important;
 		box-shadow: none !important;
 	}
-	a {
-		color: #C80 !important;
-	}`;
+	pre, code, pre code {
+		background: rgba(255, 255, 255, 0.15);
+	}
+	a, a > * {
+		color: #C80;
+	}
+	`;
 	if (styleTag) {
 		styleTag.remove();
 	} else {
