@@ -48,7 +48,6 @@ window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (argv, callback) {
 	} else { // Swap state
 		if (styleTag) {
 			styleTag.remove();
-			styleTag = document.createElement('style');
 			callback && callback({
 				err: 0,
 				msg: 'Swapped night.js styles. Removed.',
@@ -56,6 +55,7 @@ window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (argv, callback) {
 			});
 		} else {
 			styleTag = document.createElement('style');
+			styleTag.setAttribute('id', 'uuid_10a70394667c4d3a947f7c3954e83951');
 			styleTag.innerHTML = styleText;
 			document.head.appendChild(styleTag);
 			callback && callback({

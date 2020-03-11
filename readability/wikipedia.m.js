@@ -54,7 +54,6 @@ window.uuid_83e4165b9d4f4d4eb558439cd421451d_func = function (argv, callback) {
 	} else { // Swap state
 		if (styleTag) {
 			styleTag.remove()
-			styleTag = document.createElement('style');
 			callback && callback({
 				err: 0,
 				msg: 'Swapped wikipedia.m.js styles. Removed.',
@@ -62,6 +61,7 @@ window.uuid_83e4165b9d4f4d4eb558439cd421451d_func = function (argv, callback) {
 			});
 		} else {
 			styleTag = document.createElement('style');
+			styleTag.setAttribute('id', 'uuid_83e4165b9d4f4d4eb558439cd421451d');
 			styleTag.innerHTML = styleText;
 			document.head.appendChild(styleTag);
 			callback && callback({
