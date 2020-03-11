@@ -19,15 +19,45 @@ window.uuid_ba211bc1c0714e8c856a8aab16b36c17_func = function (argv, callback) {
     	`;
     };
     var styleTag = document.getElementById('uuid_ba211bc1c0714e8c856a8aab16b36c17');
-	if (verb === 'unset') {
+
+    if (verb === 'revert') {
 		styleTag.remove();
-	} else {
-		var st = document.createElement('style');
-		st.setAttribute('id', 'uuid_ba211bc1c0714e8c856a8aab16b36c17');
-		st.innerHTML = styleText;
-		document.head.appendChild(st);
-        window.uuid_9a5a3ad359c2416ead609c80962d03e6_func({font: 1}, function (res) {
-            console.log(res);
-        });
+		callback && callback({
+			err: 0,
+			msg: 'Removed infinity-family.js styles.',
+			enabled: false
+		});
+	} else if (verb === 'make') {
+		if (!styleTag) {
+			styleTag = document.createElement('style');
+			styleTag.setAttribute('id', 'uuid_ba211bc1c0714e8c856a8aab16b36c17');
+            styleTag.innerHTML = styleText;
+		} else {
+            styleTag.innerHTML = styleText;
+            document.head.appendChild(styleTag);
+        };
+		callback && callback({
+			err: 0,
+			msg: 'Added infinity-family.js styles as required.',
+			enabled: true
+		});
+	} else { // Swap state
+		if (styleTag) {
+			styleTag.remove()
+			styleTag = document.createElement('style');
+			callback && callback({
+				err: 0,
+				msg: 'Swapped infinity-family.js styles. Removed.',
+				enabled: false
+			});
+		} else {
+			styleTag.innerHTML = styleText;
+			document.head.appendChild(styleTag);
+			callback && callback({
+				err: 0,
+				msg: 'Added infinity-family.js styles as required.',
+				enabled: true
+			});
+		};
 	};
 };

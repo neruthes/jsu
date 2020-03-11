@@ -29,22 +29,45 @@ window.uuid_83e4165b9d4f4d4eb558439cd421451d_func = function (argv, callback) {
 		font-family: "JetBrains Mono", "Source Code Pro", "Inconsolata", "Menlo", Consolas, monospace !important;
 	}`;
 	var styleTag = document.getElementById('uuid_83e4165b9d4f4d4eb558439cd421451d');
-	if (verb === 'unset') {
+
+	if (verb === 'revert') {
 		styleTag.remove();
 		callback && callback({
 			err: 0,
 			msg: 'Removed wikipedia.m.js styles.',
 			enabled: false
 		});
-	} else {
-		var st = document.createElement('style');
-		st.setAttribute('id', 'uuid_83e4165b9d4f4d4eb558439cd421451d');
-		st.innerHTML = styleText;
-		document.head.appendChild(st);
+	} else if (verb === 'make') {
+		if (!styleTag) {
+			styleTag = document.createElement('style');
+			styleTag.setAttribute('id', 'uuid_83e4165b9d4f4d4eb558439cd421451d');
+            styleTag.innerHTML = styleText;
+		} else {
+            styleTag.innerHTML = styleText;
+            document.head.appendChild(styleTag);
+        };
 		callback && callback({
 			err: 0,
-			msg: 'Added wikipedia.m.js styles.',
+			msg: 'Added wikipedia.m.js styles as required.',
 			enabled: true
 		});
+	} else { // Swap state
+		if (styleTag) {
+			styleTag.remove()
+			styleTag = document.createElement('style');
+			callback && callback({
+				err: 0,
+				msg: 'Swapped wikipedia.m.js styles. Removed.',
+				enabled: false
+			});
+		} else {
+			styleTag.innerHTML = styleText;
+			document.head.appendChild(styleTag);
+			callback && callback({
+				err: 0,
+				msg: 'Added wikipedia.m.js styles as required.',
+				enabled: true
+			});
+		};
 	};
 });

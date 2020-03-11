@@ -29,22 +29,45 @@ window.uuid_c9eeedc587bd48b0a07875edc4f8ae9a_func = function (argv, callback) {
 		}
 	`;
 	var styleTag = document.getElementById('uuid_c9eeedc587bd48b0a07875edc4f8ae9a');
-	if (verb === 'unset') {
+
+	if (verb === 'revert') {
 		styleTag.remove();
 		callback && callback({
 			err: 0,
 			msg: 'Removed reset-styles.js styles.',
 			enabled: false
 		});
-	} else {
-		var st = document.createElement('style');
-		st.setAttribute('id', 'uuid_c9eeedc587bd48b0a07875edc4f8ae9a');
-		st.innerHTML = styleText;
-		document.head.appendChild(st);
+	} else if (verb === 'make') {
+		if (!styleTag) {
+			styleTag = document.createElement('style');
+			styleTag.setAttribute('id', 'uuid_c9eeedc587bd48b0a07875edc4f8ae9a');
+            styleTag.innerHTML = styleText;
+		} else {
+            styleTag.innerHTML = styleText;
+            document.head.appendChild(styleTag);
+        };
 		callback && callback({
 			err: 0,
-			msg: 'Added reset-styles.js styles.',
+			msg: 'Added reset-styles.js styles as required.',
 			enabled: true
 		});
+	} else { // Swap state
+		if (styleTag) {
+			styleTag.remove()
+			styleTag = document.createElement('style');
+			callback && callback({
+				err: 0,
+				msg: 'Swapped reset-styles.js styles. Removed.',
+				enabled: false
+			});
+		} else {
+			styleTag.innerHTML = styleText;
+			document.head.appendChild(styleTag);
+			callback && callback({
+				err: 0,
+				msg: 'Added reset-styles.js styles as required.',
+				enabled: true
+			});
+		};
 	};
 };
