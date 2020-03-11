@@ -4,7 +4,11 @@
 	@license AGPL-3.0 https://www.gnu.org/licenses/agpl-3.0.html
 */
 
-window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (styleTag, arg1, callback) {
+window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (argv, callback) {
+	var verb = 'initial';
+    if (argv) {
+        verb = argv.verb || verb;
+    };
 	var styleText = `html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, aside, textarea, input, button, blockquote, form, table, tbody, tl, td, tr, article, section, div, figure, header, footer, q, cite, em, strong, span, address, time, dfn, caption
 	{
 		color: #AAA !important;
@@ -18,7 +22,8 @@ window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (styleTag, arg1, ca
 		color: #C80;
 	}
 	`;
-	if (styleTag) {
+	document.getElementById('uuid_10a70394667c4d3a947f7c3954e83951');
+	if (verb === 'unset') {
 		styleTag.remove();
 		callback({
 			err: 0,
@@ -37,5 +42,3 @@ window.uuid_10a70394667c4d3a947f7c3954e83951_func = function (styleTag, arg1, ca
 		});
 	};
 });
-
-window.uuid_10a70394667c4d3a947f7c3954e83951_func(document.getElementById('uuid_10a70394667c4d3a947f7c3954e83951'));

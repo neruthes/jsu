@@ -4,7 +4,11 @@
 	@license AGPL-3.0 https://www.gnu.org/licenses/agpl-3.0.html
 */
 
-(function(styleTag){
+window.uuid_c9eeedc587bd48b0a07875edc4f8ae9a_func = function (argv, callback) {
+	var verb = 'initial';
+    if (argv) {
+        verb = argv.verb || verb;
+    };
 	var styleText = `
 		h1 { font-size: 40px; font-weight: 600; }
 		h2 { font-size: 36px; font-weight: 600; }
@@ -24,12 +28,23 @@
 			margin-right: auto !important;
 		}
 	`;
-	if (styleTag) {
+	var styleTag = document.getElementById('uuid_c9eeedc587bd48b0a07875edc4f8ae9a');
+	if (verb === 'unset') {
 		styleTag.remove();
+		callback({
+			err: 0,
+			msg: 'Removed reset-styles.js styles.',
+			enabled: false
+		});
 	} else {
 		var st = document.createElement('style');
 		st.setAttribute('id', 'uuid_c9eeedc587bd48b0a07875edc4f8ae9a');
 		st.innerHTML = styleText;
 		document.head.appendChild(st);
+		callback({
+			err: 0,
+			msg: 'Added reset-styles.js styles.',
+			enabled: true
+		});
 	};
-})(document.getElementById('uuid_c9eeedc587bd48b0a07875edc4f8ae9a'));
+};
