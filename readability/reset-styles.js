@@ -18,10 +18,10 @@
 		h1 ~ ol, h2 ~ ol, h3 ~ ol, h4 ~ ol, h5 ~ ol, h6 ~ ol,
 		h1 ~ table, h2 ~ table, h3 ~ table, h4 ~ table, h5 ~ table, h6 ~ table,
 		p {
-			line-height: 1.6em;
+			line-height: 1.6;
 			max-width: 736px;
-			margin-left: auto;
-			margin-right: auto;
+			margin-left: auto !important;
+			margin-right: auto !important;
 		}
 	`;
 	if (styleTag) {
