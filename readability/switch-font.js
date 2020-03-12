@@ -61,8 +61,8 @@ window.uuid_9a5a3ad359c2416ead609c80962d03e6_func = function (argv, callback) {
 		var newState = 1;
 		var newTag = document.createElement('style');
 		newTag.setAttribute('id', 'uuid_9a5a3ad359c2416ead609c80962d03e6');
-		newTag.innerHTML = txt(0);
-		newTag.setAttribute('data-state', 1);
+		newTag.innerHTML = txt(newState);
+		newTag.setAttribute('data-state', newState);
 		document.head.appendChild(newTag);
 	};
 	callback && callback({
