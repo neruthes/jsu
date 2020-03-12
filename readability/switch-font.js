@@ -43,7 +43,7 @@ window.uuid_9a5a3ad359c2416ead609c80962d03e6_func = function (argv, callback) {
 			font-weight: 400 !important;
 		}
 		h1 { font-size: 36px !important; font-weight: 600 !important; }
-		h2 { font-size: 26px !important; font-weight: 700 !important; }
+		h2 { font-size: 30px !important; font-weight: 500 !important; }
 		h3 { font-size: 24px !important; font-weight: 600 !important; }
 		h4 { font-size: 22px !important; font-weight: 400 !important; }
 		h5 { font-size: 20px !important; font-weight: 600 !important; }
