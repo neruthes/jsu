@@ -41,6 +41,7 @@ window.uuid_9a5a3ad359c2416ead609c80962d03e6_func = function (argv, callback) {
 		p, ul, ol, li, aside, textarea, input, button, blockquote, form, table, tbody, tl, td, tr, article, section {
 			font-size: 20px !important;
 			font-weight: 400 !important;
+			line-height: 1.6;
 		}
 		h1 { font-size: 36px !important; font-weight: 600 !important; }
 		h2 { font-size: 30px !important; font-weight: 500 !important; }
