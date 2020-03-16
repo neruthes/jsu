@@ -32,12 +32,14 @@ window.uuid_9a5a3ad359c2416ead609c80962d03e6_func = function (argv, callback) {
 		}
 		html, body {
 			font-size: 10px !important;
+			font-weight: 400;
 			line-height: 1.6;
 		}
 		body > *,
 		body > * > *,
 		body > * > * > * {
 			font-size: 20px;
+			font-weight: 400;
 			line-height: 1.6;
 		}
 		p, ul, ol, li, aside, textarea, input, button, blockquote, form, table, tbody, tl, td, tr, article, section {

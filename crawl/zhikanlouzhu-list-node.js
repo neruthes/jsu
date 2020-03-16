@@ -1,5 +1,5 @@
 `
-node zhikanlouzhu-list-node.js ["fetch", "parse", "export"] {tiebaId} {beginPage} {endPage}
+node zhikanlouzhu-list-node.js ["fetch", "parse", "export"] {tiebaId} {beginPage} {endPage} {keyword}
 `
 
 const fs = require('fs');
