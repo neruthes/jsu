@@ -4,33 +4,35 @@
 	@license AGPL-3.0 https://www.gnu.org/licenses/agpl-3.0.html
 */
 
-window.uuid_ba211bc1c0714e8c856a8aab16b36c17_func = function (argv, callback) {
+window.uuid_f501a8c0bfb1467f9e09da464bd56b0b_func = function (argv, callback) {
 	var verb = 'initial';
 	if (argv) {
 		verb = argv.verb || verb;
 	};
 	var styleText = '';
-	if (location.pathname.indexOf('/project/') === 0) {
+	if (location.pathname === ('/follow')) {
 		styleText = `
-		.comments {
-			float: left;
-			width: 45vw;
+		.GlobalSideBar {
+			display: none;
+		}
+		.Topstory-mainColumn {
+			margin: auto !important;
 		}
 		`;
 	};
-	var styleTag = document.getElementById('uuid_ba211bc1c0714e8c856a8aab16b36c17');
+	var styleTag = document.getElementById('uuid_f501a8c0bfb1467f9e09da464bd56b0b');
 
 	if (verb === 'revert') {
 		styleTag.remove();
 		callback && callback({
 			err: 0,
-			msg: 'Removed infinity-family.js styles.',
+			msg: 'Removed zhihu.js styles.',
 			enabled: false
 		});
 	} else if (verb === 'make') {
 		if (!styleTag) {
 			styleTag = document.createElement('style');
-			styleTag.setAttribute('id', 'uuid_ba211bc1c0714e8c856a8aab16b36c17');
+			styleTag.setAttribute('id', 'uuid_f501a8c0bfb1467f9e09da464bd56b0b');
 			styleTag.innerHTML = styleText;
 		} else {
 			styleTag.innerHTML = styleText;
@@ -38,27 +40,30 @@ window.uuid_ba211bc1c0714e8c856a8aab16b36c17_func = function (argv, callback) {
 		};
 		callback && callback({
 			err: 0,
-			msg: 'Added infinity-family.js styles as required.',
+			msg: 'Added zhihu.js styles as required.',
 			enabled: true
 		});
 	} else { // Swap state
 		if (styleTag) {
-			styleTag.remove()
+			styleTag.remove();
 			callback && callback({
 				err: 0,
-				msg: 'Swapped infinity-family.js styles. Removed.',
+				msg: 'Swapped zhihu.js styles. Removed.',
 				enabled: false
 			});
 		} else {
 			styleTag = document.createElement('style');
-			styleTag.setAttribute('id', 'uuid_ba211bc1c0714e8c856a8aab16b36c17');
+			styleTag.setAttribute('id', 'uuid_f501a8c0bfb1467f9e09da464bd56b0b');
 			styleTag.innerHTML = styleText;
 			document.head.appendChild(styleTag);
 			callback && callback({
 				err: 0,
-				msg: 'Swapped infinity-family.js styles. Added.',
+				msg: 'Swapped zhihu.js styles. Added.',
 				enabled: true
 			});
 		};
 	};
 };
+
+
+uuid_f501a8c0bfb1467f9e09da464bd56b0b_func();
