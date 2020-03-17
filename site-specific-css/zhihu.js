@@ -64,6 +64,3 @@ window.uuid_f501a8c0bfb1467f9e09da464bd56b0b_func = function (argv, callback) {
 		};
 	};
 };
-
-
-uuid_f501a8c0bfb1467f9e09da464bd56b0b_func();
