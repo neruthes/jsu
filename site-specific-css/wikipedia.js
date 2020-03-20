@@ -70,7 +70,9 @@ window.uuid_6b747739dc4e4d5ab18bfe7906fafb45_func = function (argv, callback) {
 			styleTag.setAttribute('id', 'uuid_6b747739dc4e4d5ab18bfe7906fafb45');
 			styleTag.innerHTML = styleText;
 			document.head.appendChild(styleTag);
-			uuid_9a5a3ad359c2416ead609c80962d03e6_func && uuid_9a5a3ad359c2416ead609c80962d03e6_func({font: 1});
+			setTimeout(function () {
+				uuid_9a5a3ad359c2416ead609c80962d03e6_func && uuid_9a5a3ad359c2416ead609c80962d03e6_func({font: 1});
+			}, 100);
 			callback && callback({
 				err: 0,
 				msg: 'Swapped wikipedia.js styles. Added.',

@@ -14,7 +14,7 @@
 */
 window.uuid_9a5a3ad359c2416ead609c80962d03e6_func = function (argv, callback) {
 	var givenState = argv ? argv.font : undefined;
-	if ([0,1,2,3,undefined].indexOf(givenState)) {
+	if ([0,1,2,3,undefined].indexOf(givenState) === -1) {
 		givenState = undefined;
 	};
 	var txt = function (st) {
@@ -26,7 +26,7 @@ window.uuid_9a5a3ad359c2416ead609c80962d03e6_func = function (argv, callback) {
 			${[
 				'',
 				'font-family: -apple-system, "SF Pro Text", "SF Pro UI", "SF UI Text", "Helvetica Neue", "Helvetica", "Segoe UI", "Roboto", "Product Sans", "Droid Sans", "Arial", sans-serif, "PingFang SC", "Noto Sans CJK SC", "Source Han Sans CN", "Hiragino Sans GB", "Hiragino Sans", "Heiti SC", "Microsoft YaHei" !important;',
-				'font-family: "Source Serif Pro", "Charter", "Iowan Old Style", "Georgia", "Merriweather", "Times New Roman", "Times", serif, "Noto Serif SC", "Source Han Serif CN", "Stongti SC" !important;',
+				'font-family: "Charter", "Iowan Old Style", "Source Serif Pro", "Georgia", "Merriweather", "Times New Roman", "Times", serif, "Noto Serif SC", "Source Han Serif CN", "Stongti SC" !important;',
 				'font-family: "Courier Prime", "Source Code Pro", "Courier", "Roboto Mono", "Inconsolata", "Menlo", "Consolas", monospace, "PingFang SC", "Noto Sans CJK SC", "Source Han Sans CN", "Hiragino Sans GB", "Hiragino Sans", "Heiti SC", "Microsoft YaHei" !important;'
 			][st]}
 		}
