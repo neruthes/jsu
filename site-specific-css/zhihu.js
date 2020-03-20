@@ -10,7 +10,8 @@ window.uuid_f501a8c0bfb1467f9e09da464bd56b0b_func = function (argv, callback) {
 		verb = argv.verb || verb;
 	};
 	var styleText = '';
-	if (location.pathname === ('/follow')) {
+
+	if (location.pathname === '/follow') {
 		styleText = `
 		.GlobalSideBar {
 			display: none;
@@ -20,6 +21,28 @@ window.uuid_f501a8c0bfb1467f9e09da464bd56b0b_func = function (argv, callback) {
 		}
 		`;
 	};
+	if (location.pathname.indexOf('/answer/') > -1) {
+		styleText = `
+		.Question-sideColumn {
+			display: none;
+		}
+		.ListShortcut {
+			margin: auto !important;
+		}
+		`;
+	};
+	if (location.pathname.match(/^\/question\/\d+$/)) {
+		styleText = `
+		.Question-sideColumn {
+			display: none;
+		}
+		.Question-mainColumn {
+			margin: auto !important;
+		}
+		`;
+	};
+
+
 	var styleTag = document.getElementById('uuid_f501a8c0bfb1467f9e09da464bd56b0b');
 
 	if (verb === 'revert') {
