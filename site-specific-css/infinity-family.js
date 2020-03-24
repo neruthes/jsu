@@ -9,8 +9,16 @@ window.uuid_ba211bc1c0714e8c856a8aab16b36c17_func = function (argv, callback) {
 	if (argv) {
 		verb = argv.verb || verb;
 	};
-	var styleText = '';
+	var styleText = ``;
 	if (location.pathname.indexOf('/project/') === 0) {
+		styleText = `
+		.comments {
+			float: left;
+			width: 45vw;
+		}
+		`;
+	};
+	if (location.pathname.indexOf('/method/') === 0) {
 		styleText = `
 		.comments {
 			float: left;
