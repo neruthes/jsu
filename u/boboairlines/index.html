@@ -8,6 +8,11 @@
             box-sizing: border-box;
             text-rendering: optimizeLegibility;
         }
+        @media print {
+            .hide-print {
+                display: none;
+            }
+        }
         body {
             font-family: 'JetBrains Mono', monospace;
             text-align: center;
@@ -20,7 +25,7 @@
         </style>
     </head>
     <body>
-        <div class="cont">
+        <div class="cont hide-print">
             <header>
                 <h1>Bobo Airlines Boarding Pass Generator</h1>
             </header>
@@ -108,11 +113,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="section-1-actions">
+                            <!-- <button type="button" name="button" onclick="window.print()">Print</button> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="cont">
+        <div class="cont hide-print">
             <footer>
                 &copy; 2020 Neruthes
             </footer>
