@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Bobo Airlines Boarding Pass Generator</title>
+        <style media="screen">
+        * {
+            box-sizing: border-box;
+            text-rendering: optimizeLegibility;
+        }
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            text-align: center;
+            padding: 0px;
+            margin: 0px;
+        }
+        .cont {
+            padding: 20px 20px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="cont">
+            <header>
+                <h1>Bobo Airlines Boarding Pass Generator</h1>
+            </header>
+        </div>
+        <div class="cont">
+            <div class="main">
+                <div class="section-1">
+                    <div class="section-1-inner">
+                        <div class="section-1-mainCanvas">
+                            <style media="screen">
+                                @import url('/fonts/jetbrains-mono.css');
+                                .section-1-mainCanvas {
+                                    background: url('BoboAirlines_BoardingPass_1.png') center no-repeat scroll;
+                                    background-size: contain;
+                                    position: relative;
+                                    width: 888px;
+                                    height: 364px;
+                                    margin: 0px auto;
+                                }
+                                .section-1-mainCanvas input[type="text"] {
+                                    background: none;
+                                    border: none;
+                                    position: absolute;
+                                }
+                                .section-1-mainCanvas:hover input[type="text"] {
+                                    background: rgba(150, 200, 240, 0.5);
+                                    border-radius: 3px;
+                                    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 8px; */
+                                }
+                                .canvas-input-sm {
+                                    font-family: 'JetBrains Mono', 'Menlo', monospace;
+                                    font-family: 'OCR-B', 'Menlo', monospace;
+                                    font-size: 16px;
+                                    line-height: 24px;
+                                    height: 24px;
+                                }
+                                #js-input10 {
+                                    font-family: 'JetBrains Mono', 'Menlo', monospace;
+                                    font-family: 'OCR-B', 'Menlo', monospace;
+                                    font-size: 16px;
+                                    line-height: 24px;
+                                    text-align: left;
+                                    position: absolute;
+                                }
+                                #js-input10 strong {
+                                    font-weight: 800;
+                                }
+                                .canvas-input-bg {
+                                    font-family: 'JetBrains Mono', 'Menlo', monospace;
+                                    font-weight: 800;
+                                    font-size: 30px;
+                                    line-height: 40px;
+                                    width: 140px;
+                                    height: 40px;
+                                }
+                            </style>
+                            <div class="">
+                                <input id="js-input1" class="canvas-input canvas-input-sm" style="top: 88px; left: 85px; width: 270px;" type="text" name="" value="FIRSTNAME/LASTNAME">
+                                <input id="js-input2" class="canvas-input canvas-input-sm" style="top: 118px; left: 85px; width: 270px;" type="text" name="" value="SHANGHAI">
+                                <input id="js-input3" class="canvas-input canvas-input-sm" style="top: 148px; left: 85px; width: 270px;" type="text" name="" value="SOME ISLAND">
+                                <input id="js-input4" class="canvas-input canvas-input-bg" style="top: 200px; left: 30px; width: 120px;" type="text" name="" value="09:41">
+                                <input id="js-input5" class="canvas-input canvas-input-bg" style="top: 200px; left: 250px; width: 120px;" type="text" name="" value="A42">
+                                <input id="js-input6" class="canvas-input canvas-input-sm" style="top: 268px; left: 27px; width: 50px;" type="text" name="" value="1A">
+                                <input id="js-input7" class="canvas-input canvas-input-sm" style="top: 268px; left: 82px; width: 50px;" type="text" name="" value="F">
+                                <input id="js-input8" class="canvas-input canvas-input-sm" style="top: 268px; left: 152px; width: 80px;" type="text" name="" value="BB278">
+                                <input id="js-input9" class="canvas-input canvas-input-sm" style="top: 268px; left: 252px; width: 100px;" type="text" name="" value="2020-04-29">
+
+                                <div id="js-input10" style="top: 90px; left: 680px;">
+                                    <script type="text/javascript">
+                                    var canvasInputEventHandler = function () {
+                                        document.querySelector('#js-input10').innerHTML = `
+                                            ${document.querySelector('#js-input1').value}
+                                            ${document.querySelector('#js-input2').value}
+                                            ${document.querySelector('#js-input3').value}
+                                            ${document.querySelector('#js-input6').value}
+                                            <strong>${document.querySelector('#js-input8').value}</strong>
+                                            <strong>${document.querySelector('#js-input9').value}</strong>
+                                        `.trim().split('\n').map(x => x.trim()).join('<br>');
+                                    };
+                                    canvasInputEventHandler();
+                                    document.querySelectorAll('.canvas-input').forEach(function (node) {
+                                        node.addEventListener('input', canvasInputEventHandler);
+                                    });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cont">
+            <footer>
+                &copy; 2020 Neruthes
+            </footer>
+        </div>
+    </body>
+</html>
