@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>ISO 8601 Week</title>
+	<title>了转反</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="pridejs-config-duration" content="regular">
 	<style type="text/css">
@@ -42,11 +42,11 @@
 		transition: all 200ms ease;
 	}
 	body {
-		font-family: 'Source Code Pro', Seravek, 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', Arial, 'Arial-Black', 'Arial Black', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', sans-serif;
+		font-family: -apple-system, 'Helvetica Neue', Helvetica, 'Open Sans', 'Lucida Grande', Arial, 'Arial-Black', 'Arial Black', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', sans-serif;
 		font-size: 18px;
 		font-weight: 300;
 		color: #FFF;
-		color: #666;
+		color: #000;
 		background: #2089DA;
 		background: #F2F2F2;
 		padding: 0;
@@ -66,6 +66,9 @@
 		/* height: 0px; */
 		margin: 1.6rem 0 0;
 		/* overflow: hidden; */
+	}
+	h1 a {
+		color: inherit;
 	}
 	h2 {
 		font-size: 16px;
@@ -106,12 +109,13 @@
 	footer {
 		font-size: 13px;
 		font-weight: 400;
-		color: #666;
+		color: #999;
 
 		padding: 2rem 0 2rem;
 	}
 	footer a {
-		opacity: 0.5;
+		color: inherit;
+		text-decoration: underline;
 		transition: none;
 	}
 	footer a:hover {
@@ -119,46 +123,69 @@
 	}
 	/* ---------------------------------------- */
 	a {
-		color: inherit;
+		color: #17F;
 		text-decoration: none;
 	}
 	</style>
+	<style>
+	.bookmarklet-anchor-hidden-text {
+		font-size: 0px;
+	}
+	.bookmarklet-anchor-hidden-text::before {
+		font-size: 13px;
+	}
+	</style>
+	<script>
+	function focus () {
+		document.getElementById('ta-original').focus();
+	};
+	</script>
 </head>
-<body data-string-empty="true">
-	<div class="cont">
-		<h1><a href="./">ISO Week</a></h1>
-		<div class="content" id="textarea-01-container">
-			<h2><label for="textarea-01">Today Is</label></h2>
-			<textarea id="textarea-01" readonly></textarea>
+<body onclick="focus()" data-string-empty="true">
+	<div class="cont" onclick="focus()">
+		<h1><a href="./">了转反</a></h1>
+		<div class="content" id="ta-original-container">
+			<h2><label for="ta-original">输入原文</label></h2>
+			<textarea id="ta-original" autofocus></textarea>
+		</div>
+		<div class="content fade-when-input-box-empty" id="ta-encoded-container">
+			<h2>反转后</h2>
+			<textarea id="ta-encoded"></textarea>
 		</div>
 		<footer class="desktop-only fade-when-input-box-empty">
 			<div class="_desktop-linecompact">
-				<a href="//neruthes.xyz/">Created by <strong>Neruthes</strong>.</a>
-				<span><a href="//github.com/neruthes/jsu/">Source code</a> available.</span>
-				<span>Licensed under <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU AGPL v3</a>.</span>
+				Created by <a href="//neruthes.xyz/">Neruthes</a>.
+				<span>The <a href="//github.com/neruthes/jsu/">source code</a> is available under <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU AGPL v3</a>.</span>
 			</div>
 		</footer>
 	</div>
-	<script type="text/javascript">
-	var leftpad = function (str) {
-		var len = 2;
-		var pad = '0';
-		return (new Array(len-str.length)).fill(pad) + str;
+	<script>
+	var mainConvertFunction = function (inputText) {
+		return inputText.split('').reverse().join('');
 	};
-	var getWeek = function (dateObj) {
-	    var newDate = new Date(dateObj.getTime());
-	    var dayN = (dateObj.getDay() + 6) % 7;
-	    newDate.setDate(newDate.getDate() - dayN + 3);
-	    var firstThursday = newDate.valueOf();
-	    newDate.setMonth(0, 1);
-	    if (newDate.getDay() !== 4) {
-	        newDate.setMonth(0, 1 + ((4 - newDate.getDay()) + 7) % 7);
-	    };
-	    return (new Date()).getUTCFullYear() + '-W' + leftpad(
-			( 1 + Math.ceil((firstThursday-newDate)/604800000) ).toString()
-		) + '-' + dateObj.getDay();
+
+	document.getElementById('ta-original').value = '立党老师反转了';
+	var userInputEventHandler = function () {
+		var encodedText = mainConvertFunction(document.getElementById('ta-original').value);
+		document.getElementById('ta-encoded').value = encodedText;
+		if (document.getElementById('ta-original').value.length !== 0) {
+			document.body.setAttribute('data-string-empty', 'false');
+		} else {
+			document.body.setAttribute('data-string-empty', 'true');
+		};
 	};
-	document.querySelector('#textarea-01').value = getWeek(new Date());
+	document.getElementById('ta-original').addEventListener('input', userInputEventHandler);
+	userInputEventHandler();
+	document.getElementById('ta-encoded').style.visibility = 'visible';
+
+	var taEncodedFocusEventHandler = function () {
+		setTimeout(function () {
+			document.getElementById('ta-encoded').select();
+		}, 10);
+	};
+
+	document.getElementById('ta-encoded').addEventListener('focus', taEncodedFocusEventHandler);
+	document.getElementById('ta-encoded').addEventListener('click', taEncodedFocusEventHandler);
 	</script>
 </body>
 </html>
