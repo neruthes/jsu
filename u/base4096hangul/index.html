@@ -94,6 +94,29 @@
 			height: 6rem;
 		}
 	}
+	#userActions-container {
+        height: 50px;
+    }
+    #userActions-container > button {
+		font-size: 16px;
+		line-height: 20px;
+		text-align: center;
+		color: #FFF;
+		background: #17F;
+		border: none;
+		border-radius: 5px;
+		display: block;
+		width: 45%;
+		padding: 15px 0;
+		margin: 0;
+		cursor: pointer;
+	}
+	#userActions-container > button:first-child {
+		float: left;
+	}
+	#userActions-container > button:last-child {
+		float: right;
+	}
 	footer {
 		font-size: 13px;
 		font-weight: 400;
@@ -136,7 +159,7 @@
 			<h2><label for="ta-input">Input</label></h2>
 			<textarea id="ta-input" autofocus></textarea>
 		</div>
-		<div class="content">
+		<div class="content" id="userActions-container">
 			<button onclick="btn_encodeB4096Hangul()">Encode</button>
 			<button onclick="btn_decodeB4096Hangul()">Decode</button>
 		</div>
