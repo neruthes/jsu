@@ -2,6 +2,6 @@
 # yarn lockfile v1
 
 
-base4096hangul@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/base4096hangul/-/base4096hangul-1.0.1.tgz#135498f3d3a5d0df22290982f720046b4de8f42f"
+base4096hangul@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/base4096hangul/-/base4096hangul-1.0.4.tgz#4cb8f5e45d51ba28c9aa8a8b5f5c7471c80105d0"
