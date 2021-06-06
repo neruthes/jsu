@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <title>AOSC Pull Request Template</title>
+        <style>
+        html, body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 20px;
+        }
+        .cont {
+            max-width: 900px;
+            padding: 30px;
+            margin: 0 auto;
+        }
+        .content {
+            padding: 30px 0;
+            margin: 0 0 30px;
+        }
+        .input-group {
+            padding: 10px 0;
+            margin: 0 0 30px;
+        }
+        .input-group > label {
+            font-size: 24px;
+            font-weight: 600;
+            display: block;
+        }
+        .input-group > aside {
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+        .input-group > input[type="text"],
+        .input-group > textarea {
+            font-family: inherit;
+            font-size: 18px;
+            width: 100%;
+            padding: 7px 5px;
+            margin: 8px 0;
+        }
+        .input-group > .checkbox-group {
+            margin: 5px 0;
+        }
+        .input-group--checkbox {}
+        </style>
+        <script>
+        const ALL_ARCH_MAP = {
+            noarch: 'Architecture-independent',
+            amd64: 'AMD64',
+            arm64: 'AArch64',
+            loongson3: 'Loongson 3',
+            ppc64el: 'PowerPC 64-bit',
+            i486: 'Retro i486'
+        }
+        const ARCH_CAT_MAJOR = 'noarch amd64 arm64'.split(' ');
+        const ARCH_CAT_MINOR = 'loongson3 ppc64el i486'.split(' ');
+        const ALL_ARCH_LIST = ARCH_CAT_MAJOR.concat(ARCH_CAT_MINOR);
+        </script>
+    </head>
+
+    <body>
+        <div class="cont">
+            <div class="content">
+                <h1>AOSC ACBS Repo PR Template</h1>
+            </div>
+            <div class="content">
+                <div class="input-group input-group--textarea">
+                    <label for="">General Description</label>
+                    <textarea name="" id="form-ta-desc" rows="10">Write a description of the pull request here.</textarea>
+                    <aside></aside>
+                </div>
+                <div class="input-group input-group--textarea">
+                    <label for="">List of affected packages</label>
+                    <textarea name="" id="form-ta-pkglist" rows="10">example</textarea>
+                    <aside>One package name per line.</aside>
+                </div>
+                <div class="input-group input-group--text">
+                    <label for="">Is Security Update?</label>
+                    <input type="text" name="" id="form-text-security" value="" placeholder="">
+                    <aside>Number of issue, or leave empty if this is not a security update.</aside>
+                </div>
+                <div class="input-group input-group--checkboxes">
+                    <label for="">Applicable Architectures</label>
+                    <script>
+                    document.write((function (){
+                        return ALL_ARCH_LIST.map(function (archCode) {
+                            return `<div class="checkbox-group">
+                                <input type="checkbox" name="form-cb-arch-${archCode}" id="form-cb-arch-${archCode}">
+                                <label for="form-cb-arch-${archCode}">${ALL_ARCH_MAP[archCode]}</label>
+                            </div>`;
+                        }).join('');
+                    })());
+                    </script>
+                    <aside>If noarch, select noarch and unselect all other options.</aside>
+                </div>
+            </div>
+            <div class="content">
+                <button id="js-btn-generate" style="
+                    font-size: 24px;
+                    padding: 8px 16px;
+                ">Generate</button>
+                <script>
+                const generateOutput = function () {
+                    const genArchCheckList = function (archCatList) {
+                        return archCatList.map(function (archCode) {
+                            if (document.querySelector(`#form-cb-arch-${archCode}`).checked === true) {
+                                return `- [ ] ${ALL_ARCH_MAP[archCode]} (${archCode})`;
+                            } else {
+                                return '';
+                            };
+                        }).join('\n');
+                    };
+                    let tmpStr = document.querySelector('#js-prBodyTmpl').innerHTML.trim();
+                    tmpStr = tmpStr.replace(/___DESC___/g, document.querySelector('#form-ta-desc').value);
+                    let pkglist = document.querySelector('#form-ta-pkglist').value.trim().split('\n').map(x => '- ' + x);
+                    tmpStr = tmpStr.replace(/___PKG_LIST___/g, pkglist.join('\n'));
+                    tmpStr = tmpStr.replace(/___BUILD_ORDER___/g, pkglist.length > 1 ? `Build Order\n-----------\n\n` + pkglist.join('\n') : '');
+                    tmpStr = tmpStr.replace(/___IS_SECURITY___/g, document.querySelector('#form-text-security').value.trim() === '' ? 'No' : 'Yes - Issue Number: #' + document.querySelector('#form-text-security').value);
+                    tmpStr = tmpStr.replace(
+                        /___ARCH_CHECK_LIST_MAJOR___/g,
+                        genArchCheckList(ARCH_CAT_MAJOR)
+                    );
+                    tmpStr = tmpStr.replace(
+                        /___ARCH_CHECK_LIST_MINOR___/g,
+                        genArchCheckList(ARCH_CAT_MINOR)
+                    );
+                    document.querySelector('#js-finalOutput').value = tmpStr;
+                };
+                document.querySelector('#js-btn-generate').addEventListener('click', generateOutput);
+                </script>
+            </div>
+            <div class="content">
+                <textarea name="" id="js-finalOutput" rows="10" style="width: 100%;"></textarea>
+                <script>
+                document.querySelector('#js-finalOutput').addEventListener('focus', function () {
+                    document.querySelector('#js-finalOutput').select();
+                });
+                </script>
+            </div>
+        </div>
+        <div id="js-prBodyTmpl" style="display: none;">
+Topic Description
+-----------------
+
+___DESC___
+
+Package(s) Affected
+-------------------
+
+___PKG_LIST___
+
+Security Update?
+----------------
+
+___IS_SECURITY___
+
+___BUILD_ORDER___
+
+Architectural Progress
+----------------------
+
+___ARCH_CHECK_LIST_MAJOR___
+
+Secondary Architectural Progress
+--------------------------------
+
+Architectural progress for "secondary," or experimental ports does not impede on merging of this topic.
+
+___ARCH_CHECK_LIST_MINOR___
+
+----
+
+After the pull request is merged, all package(s) affected must be rebuilt against the `stable` Git tree and environment
+(only `stable` repository should be enabled in `sources.list`). This section marks the progress above.
+
+Please, make sure the list of architectures below matches the ones above.
+
+Post-Merge Architectural Progress
+---------------------------------
+
+___ARCH_CHECK_LIST_MAJOR___
+
+Post-Merge Secondary Architectural Progress
+-------------------------------------------
+
+Architectural progress for "secondary," or experimental ports does not impede on merging of this topic.
+
+___ARCH_CHECK_LIST_MINOR___
+        </div>
+    </body>
+
+</html>
