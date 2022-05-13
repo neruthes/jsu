@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>AOSC OS ACBS Repo Commit Message Generator</title>
+    <style>
+        html,
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 20px;
+        }
+
+        .cont {
+            max-width: 900px;
+            padding: 30px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 20px 0;
+            margin: 0 0 10px;
+        }
+
+        .input-group {
+            padding: 0px 0;
+            margin: 0 0 10px;
+        }
+
+        .input-group>label {
+            font-size: 14px;
+            font-weight: 600;
+            display: block;
+        }
+
+        .input-group>aside {
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+
+        .input-group>input[type="text"],
+        .input-group>textarea {
+            font-family: 'SF Pro Text', 'Helvetica Neue', 'Helvetica', 'Noto Sans', sans-serif;
+            font-size: 18px;
+            width: 100%;
+            padding: 7px 5px;
+            margin: 8px 0;
+        }
+
+        .input-group>.checkbox-group {
+            margin: 5px 0;
+        }
+
+        .input-group--checkbox {}
+    </style>
+    <script>
+        const TYPE_CODE_NAME_MAP = {
+            intro: {
+                code: 'intro',
+                hfn: 'Introducing a new package',
+                vars: ['PKGNAME', 'PKGVER'],
+                render: function (d) {
+                    return `${d.PKGNAME}: new, ${d.PKGVER}`;
+                }
+            },
+            sec_update: {
+                code: 'sec_update',
+                hfn: 'Security fixes with version update',
+                vars: ['PKGNAME', 'PKGVER', 'NNN'],
+                render: function (d) {
+                    return `${d.PKGNAME}: update to ${d.PKGVER}; ${d.NNN}`;
+                }
+            },
+            sec_patch_distro: {
+                code: 'sec_patch_distro',
+                hfn: 'Security fixes without version update, utilising distribution patch(es)',
+                vars: ['PKGNAME', 'DISTNAME', 'CHANNEL', 'NNN'],
+                render: function (d) {
+                    return `${d.PKGNAME}: (${d.DISTNAME} patches, ${d.CHANNEL}) ${d.NNN}`;
+                }
+            },
+            sec_patch_upstream: {
+                code: 'sec_patch_upstream',
+                hfn: 'Security fixes without version update, utilising upstream patch(es)',
+                vars: ['PKGNAME', 'NNN'],
+                render: function (d) {
+                    return `${d.PKGNAME}: (upstream patches) ${d.NNN}`;
+                }
+            },
+            update: {
+                code: 'update',
+                hfn: 'Updating a package',
+                vars: ['PKGNAME', 'PKGVER'],
+                render: function (d) {
+                    return `${d.PKGNAME}: update to ${d.PKGVER}`;
+                }
+            },
+            wip_ftbfs: {
+                code: 'wip_ftbfs',
+                hfn: 'Work-in-progress with a fail-to-build package',
+                vars: ['PKGNAME', 'PKGVER', 'MsgMain'],
+                render: function (d) {
+                    return `${d.PKGNAME}: update to ${d.PKGVER} (FTBFS)`;
+                }
+            },
+            generic: {
+                code: 'generic',
+                hfn: 'Working with a package',
+                vars: ['PKGNAME', 'MsgMain'],
+                render: function (d) {
+                    return `${d.PKGNAME}: ${d.MsgMain}`;
+                }
+            },
+            generic_multiact: {
+                code: 'generic_multiact',
+                hfn: 'Working with a package, multiple actions',
+                vars: ['PKGNAME', 'MsgMain', 'MsgExtra'],
+                render: function (d) {
+                    return `${d.PKGNAME}: ${d.MsgMain}; ${d.MsgExtra}`;
+                }
+            },
+            generic_patch_distro: {
+                code: 'generic_patch_distro',
+                hfn: 'Working with a package, utilising distribution patch(es)',
+                vars: ['PKGNAME', 'DISTNAME', 'CHANNEL', 'MsgMain'],
+                render: function (d) {
+                    return `${d.PKGNAME}: (${d.DISTNAME} patches, ${d.CHANNEL}) ${d.MsgMain}`;
+                }
+            },
+            generic_patch_upstream: {
+                code: 'generic_patch_upstream',
+                hfn: 'Working with a package, utilising upstream patch(es)',
+                vars: ['PKGNAME', 'MsgMain'],
+                render: function (d) {
+                    return `${d.PKGNAME}: (upstream patches) ${d.MsgMain}`;
+                }
+            },
+            qa: {
+                code: 'qa',
+                hfn: 'Working with a QA issue',
+                vars: ['PKGNAME', 'MsgMain', 'ISSUECODE'],
+                render: function (d) {
+                    return `${d.PKGNAME}: ${d.MsgMain} (${d.ISSUECODE})`;
+                }
+            },
+            arch: {
+                code: 'arch',
+                hfn: 'Working with an architecturally-exclusive package',
+                vars: ['PKGNAME', 'MsgMain', 'ARCH'],
+                render: function (d) {
+                    return `${d.PKGNAME}: ${d.MsgMain} (${d.ARCH})`;
+                }
+            },
+            noarch: {
+                code: 'noarch',
+                hfn: 'Working with an architecturally-independent package',
+                vars: ['PKGNAME', 'MsgMain'],
+                render: function (d) {
+                    return `${d.PKGNAME}: ${d.MsgMain}`;
+                }
+            },
+        }
+        const ALL_COMMIT_TYPES = Object.keys(TYPE_CODE_NAME_MAP);
+        const ALL_VARS_LIST = {
+            PKGNAME: { varname: 'PKGNAME', sample: 'systemd' },
+            PKGVER: { varname: 'PKGVER', sample: '1.0.1' },
+            NNN: { varname: 'NNN', sample: '9527' },
+            DISTNAME: { varname: 'DISTNAME', sample: 'Ubuntu' },
+            CHANNEL: { varname: 'CHANNEL', sample: '20.04 LTS' },
+            ISSUECODE: { varname: 'ISSUECODE', sample: 'E431' },
+            ARCH: { varname: 'ARCH', sample: 'amd64' },
+            MsgMain: { varname: 'MsgMain', sample: 'add fcitx dependency / new, 5.17.6 / update to 5.17.6' },
+            MsgExtra: { varname: 'MsgExtra', sample: 'some extra notes' },
+        };
+
+        // const genVarInputHtml = function () {}
+        const genVarInputHtml_Section = function (entry) {
+            return `<div class="input-group input-group--text">
+                <label for="">${entry.varname}</label>
+                <input type="text" name="" data-varname="${entry.varname}" id="v-${entry.varname}" rows="1" placeholder="e.g. ${entry.sample}"></input>
+            </div>`;
+        };
+        const renderVarsInputList = function () {
+            const nodeDropDownMenuForCommitType = document.querySelector('#dropdown-container--committype select');
+            const theType = nodeDropDownMenuForCommitType.value;
+            const varsList = TYPE_CODE_NAME_MAP[theType].vars;
+            console.log('varsList', varsList);
+            document.querySelector('#form-section-vars').innerHTML = varsList.map(function (varname) {
+                return genVarInputHtml_Section(ALL_VARS_LIST[varname]);
+            }).join('');
+        };
+        const rerenderCommitMessage = function () {
+            const nodeDropDownMenuForCommitType = document.querySelector('#dropdown-container--committype select');
+            const theType = nodeDropDownMenuForCommitType.value;
+            const renderFunction = TYPE_CODE_NAME_MAP[theType].render;
+            const valdict = {};
+            TYPE_CODE_NAME_MAP[theType].vars.map(function (varname) {
+                valdict[varname] = document.querySelector(`input[data-varname="${varname}"]`).value || 'EMPTY';
+            });
+            document.querySelector('#finalCommitMsg').value = renderFunction(valdict);
+        };
+
+        window.addEventListener('input', function (e) {
+            if (!e.target.getAttribute('data-varname')) {
+                return 0
+            } else {
+                console.log('input!');
+                rerenderCommitMessage();
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="cont">
+        <div class="content">
+            <h1>AOSC OS ACBS Repo Commit Message Generator</h1>
+        </div>
+        <div class="content">
+            <h2>Select Commit Type</h2>
+            <div class="input-group">
+                <div id="dropdown-container--committype"></div>
+            </div>
+        </div>
+        <div class="content">
+            <h2>Fill Variables</h2>
+            <div id="form-section-vars"></div>
+        </div>
+        <div class="content">
+            <h2>Notes</h2>
+            <ul>
+                <li>The NNN variable is a list of '#'-prefixed issue numbers, which shall be delimited by whitespace.</li>
+                <li>The CHANNEL variable shall be omitted for a rolling release distro.</li>
+            </ul>
+        </div>
+
+
+        <script>
+            const typesSelectHtml = (function () {
+                return `<select style="font-size: 18px;" class="form-select">` + ALL_COMMIT_TYPES.map(function (typeCode) {
+                    return `<option value="${typeCode}">
+                        ${typeCode}  ---  ${TYPE_CODE_NAME_MAP[typeCode].hfn}
+                    </option>`;
+                }).join('') + '</select>';
+            })();
+            console.log(typesSelectHtml);
+            document.querySelector('#dropdown-container--committype').innerHTML = typesSelectHtml;
+            const nodeDropDownMenuForCommitType = document.querySelector('#dropdown-container--committype select');
+            renderVarsInputList();
+            nodeDropDownMenuForCommitType.addEventListener('input', renderVarsInputList);
+        </script>
+
+
+
+        
+        <div class="content">
+            <h2>Generated Commit Message</h2>
+            <div class="input-group input-group--textarea">
+                <textarea name="" id="finalCommitMsg" rows="4" style="width: 100%; font-size: 22px;"></textarea>
+                <script>
+                    document.querySelector('#finalCommitMsg').addEventListener('focus', function () {
+                        document.querySelector('#finalCommitMsg').select();
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="content">
+            <footer>&copy 2021-2022 Neruthes. This webpage is published with <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU GPLv2</a>.</footer>
+        </div>
+    </div>
+</body>
+
+</html>
