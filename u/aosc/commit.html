@@ -173,8 +173,7 @@
             MsgExtra: { varname: 'MsgExtra', sample: 'some extra notes' },
         };
 
-        // const genVarInputHtml = function () {}
-        const genVarInputHtml_Section = function (entry) {
+        const genVarInputHtml_section = function (entry) {
             return `<div class="input-group input-group--text">
                 <label for="">${entry.varname}</label>
                 <input type="text" name="" data-varname="${entry.varname}" id="v-${entry.varname}" rows="1" placeholder="e.g. ${entry.sample}"></input>
@@ -186,7 +185,7 @@
             const varsList = TYPE_CODE_NAME_MAP[theType].vars;
             console.log('varsList', varsList);
             document.querySelector('#form-section-vars').innerHTML = varsList.map(function (varname) {
-                return genVarInputHtml_Section(ALL_VARS_LIST[varname]);
+                return genVarInputHtml_section(ALL_VARS_LIST[varname]);
             }).join('');
         };
         const rerenderCommitMessage = function () {
@@ -204,7 +203,6 @@
             if (!e.target.getAttribute('data-varname')) {
                 return 0
             } else {
-                console.log('input!');
                 rerenderCommitMessage();
             }
         });
