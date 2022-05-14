@@ -212,7 +212,8 @@
 <body>
     <div class="cont">
         <div class="content">
-            <h1>AOSC OS ACBS Repo Commit Message Generator</h1>
+            <h1>Commit Message Generator</h1>
+            <a href="https://wiki.aosc.io/developer/packaging/package-styling-manual/">Reference documentation on AOSC Wiki</a>
         </div>
         <div class="content">
             <h2>Select Commit Type</h2>
@@ -224,20 +225,13 @@
             <h2>Fill Variables</h2>
             <div id="form-section-vars"></div>
         </div>
-        <div class="content">
-            <h2>Notes</h2>
-            <ul>
-                <li>The NNN variable is a list of '#'-prefixed issue numbers, which shall be delimited by whitespace.</li>
-                <li>The CHANNEL variable shall be omitted for a rolling release distro.</li>
-            </ul>
-        </div>
 
 
         <script>
             const typesSelectHtml = (function () {
                 return `<select style="font-size: 18px;" class="form-select">` + ALL_COMMIT_TYPES.map(function (typeCode) {
                     return `<option value="${typeCode}">
-                        ${typeCode}  ---  ${TYPE_CODE_NAME_MAP[typeCode].hfn}
+                    &lt;${typeCode}>  ${TYPE_CODE_NAME_MAP[typeCode].hfn}
                     </option>`;
                 }).join('') + '</select>';
             })();
@@ -262,6 +256,15 @@
                 </script>
             </div>
         </div>
+
+        <div class="content">
+            <h2>Notes</h2>
+            <ul>
+                <li>The NNN variable is a list of '#'-prefixed issue numbers, which shall be delimited by whitespace.</li>
+                <li>The CHANNEL variable shall be omitted for a rolling release distro.</li>
+            </ul>
+        </div>
+        
         <div class="content">
             <footer>&copy 2021-2022 Neruthes. This webpage is published with <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU GPLv2</a>.</footer>
         </div>
