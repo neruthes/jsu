@@ -2,10 +2,10 @@
 
 ## Online Utilities
 
-- [Date-Distance](https://neruthes.xyz/jsu/u/date-distance/)
-- [ISO-Week](https://neruthes.xyz/jsu/u/iso-week/)
-- [中文竖排](https://neruthes.xyz/jsu/u/zh-vertical/)
-- [了转反](https://neruthes.xyz/jsu/u/lzf/)
+- [Date-Distance](https://neruthes.github.io/jsu/u/date-distance/)
+- [ISO-Week](https://neruthes.github.io/jsu/u/iso-week/)
+- [中文竖排](https://neruthes.github.io/jsu/u/zh-vertical/)
+- [了转反](https://neruthes.github.io/jsu/u/lzf/)
 
 ## Scripts for Scrlo
 
@@ -13,7 +13,7 @@ See [neruthes/Scrlo](https://github.com/neruthes/Scrlo) to learn more about how 
 
 ## Copyright
 
-© 2014-2020 Neruthes ([neruthes.xyz](https://neruthes.xyz/))
+© 2014-2023 Neruthes ([neruthes.xyz](https://neruthes.xyz/))
 
 Each component has its own licensing notice.
 

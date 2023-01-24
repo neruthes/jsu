@@ -10,7 +10,7 @@ window.uuid_83e4165b9d4f4d4eb558439cd421451d_func = function (argv, callback) {
 		verb = argv.verb || verb;
 	};
 	var styleText = `
-	@import url(https://neruthes.xyz/fonts/jetbrains-mono.css);
+	@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap');
 	html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, aside, textarea, input, button, blockquote, form, table, tbody, tl, td, tr, article, section, div, a, figure, header, footer, q, cite, em, strong, address, time, dfn, caption
 	{
 	}
