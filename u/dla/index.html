@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input" type="text" value="" placeholder="Paste file URL here..." />
+
+    <a id="anchor" href="">The Download Link</a>
+
+    <script>
+        document.querySelector('#input').addEventListener('input', function () {
+            document.querySelector('#anchor').href = document.querySelector('#input').value.trim();
+        });
+    </script>
+</body>
+</html>
+<!-- https://pub-714f8d634e8f451d9f2fe91a4debfa23.r2.dev/jsu/36d0374df950cc02686a5c7d/index.html -->
