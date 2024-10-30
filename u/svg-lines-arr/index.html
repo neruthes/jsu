@@ -45,7 +45,7 @@
             const svg = document.querySelector('#js-svgoutput').innerHTML;
             const blob = new Blob([svg.toString()]);
             const element = document.createElement("a");
-            element.download = "w3c.svg";
+            element.download = "generated.svg";
             element.href = window.URL.createObjectURL(blob);
             element.click();
             element.remove();
