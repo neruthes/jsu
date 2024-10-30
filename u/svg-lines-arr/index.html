@@ -31,6 +31,7 @@
     </div>
     <div>
         <button id="btn-generate">Generate</button>
+        <button id="btn-download">Download</button>
     </div>
     <div>
 
@@ -40,6 +41,18 @@
     </div>
 
     <script>
+        function downloadSVG() {
+            const svg = document.querySelector('#js-svgoutput').innerHTML;
+            const blob = new Blob([svg.toString()]);
+            const element = document.createElement("a");
+            element.download = "w3c.svg";
+            element.href = window.URL.createObjectURL(blob);
+            element.click();
+            element.remove();
+        }
+        document.querySelector('#btn-download').addEventListener("click", function () {
+            downloadSVG()
+        });
         document.querySelector('#btn-generate').addEventListener("click", function () {
             let content = '';
             let width = parseInt(document.querySelector('#v-width').value);
@@ -47,9 +60,9 @@
             let repeat = parseInt(document.querySelector('#v-repeat').value);
             let distance = parseInt(document.querySelector('#v-distance').value);
             for (let i = 0; i < repeat; i += 1) {
-                content += `<path stroke="black" stroke-width="1" d="M ${i * distance},0 l ${width},${-height}" />`;
+                content += `<path stroke="black" stroke-width="1" d="M ${i * distance},${height} l ${width},${-height}" />`;
             };
-            let svg_text = `<svg viewBox="-20 -20 ${width + repeat * distance + 40} ${height + 40}" xmlns="http://www.w3.org/2000/svg">
+            let svg_text = `<svg width="500px" viewBox="-20 -20 ${width + repeat * distance + 40} ${height + 40}" xmlns="http://www.w3.org/2000/svg">
             ${content}
             </svg>`;
             console.log(svg_text);
