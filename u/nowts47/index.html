@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serial Generator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h2 { margin-top: 0; color: #333; }
+        #result {
+            font-family: monospace;
+            font-size: 1.5rem;
+            display: block;
+            margin: 1.5rem 0;
+            padding: 0.5rem;
+            background: #eee;
+            border-radius: 4px;
+            color: #007bff;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover { background-color: #0056b3; }
+        button:active { transform: translateY(1px); }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Serial Number</h2>
+    <span id="result">--------</span>
+    <button onclick="generateSerial()">Generate</button>
+</div>
+
+<script>
+    function generateSerial() {
+        // Equivalent to: date -u
+        const now = new Date();
+        
+        // year=$(date -u +%Y)
+        const year = now.getUTCFullYear();
+        
+        // now=$(date -u +%s)
+        const nowSeconds = Math.floor(now.getTime() / 1000);
+        
+        // start_of_year=$(date -u -d "$year-01-01 00:00:00" +%s)
+        const startOfYear = Math.floor(Date.UTC(year, 0, 1) / 1000);
+        
+        // seconds_in_year=$((now - start_of_year))
+        const secondsInYear = nowSeconds - startOfYear;
+        
+        // result=$((seconds_in_year / 4 + year * 10000000))
+        const result = Math.floor(secondsInYear / 4) + (year * 10000000);
+        
+        document.getElementById('result').textContent = result;
+    }
+
+    // Generate one on load
+    generateSerial();
+</script>
+
+</body>
+</html>
